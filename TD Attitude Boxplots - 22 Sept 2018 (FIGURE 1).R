@@ -5,7 +5,7 @@ library("rstudioapi")
 rm(list = ls())
 setwd(dirname(getActiveDocumentContext()$path))
 
-tdsurvey <- read.dta("TD Survey 2007-16 - 13 Jan 2018.dta")
+tdsurvey <- read.dta("TD Survey 2007-16 fake data.dta")
 tdsurvey16 <- tdsurvey[tdsurvey$Wave == "2016",]
 
 #================boxplots of TD attitudes===============

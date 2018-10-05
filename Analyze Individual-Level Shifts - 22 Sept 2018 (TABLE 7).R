@@ -8,7 +8,9 @@ setwd(dirname(getActiveDocumentContext()$path))
 
 ##====================A: Reshape data to wide format=================
 #Read in data
-tdsurvey <- read.dta("TD Survey 2007-16 - 13 Jan 2018.dta")
+tdsurvey <- read.dta("TD Survey 2007-16 fake data.dta")
+tdsurvey$Party <- factor(tdsurvey$Party, levels = c("FF","FG","Lab", "SF","Gr","Left","Ind","PD"))
+
 
 #index of variables to include and exclude from analysis
 long.timevar <- "Wave"
