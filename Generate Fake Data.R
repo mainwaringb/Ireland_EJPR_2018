@@ -39,12 +39,12 @@ faketds <- data.frame(Name = sapply(sample(x=491, size = 313, replace = TRUE), t
 #Check if any TD in the simulated data was sampled more than three times
 #Since this is a three-wave survey, this would be logically impossible
 #If there are problematic cases, manually regenerate data 
-#I've picked a seed that meets the needed propertiy
+#I've picked a seed that meets the needed property
 table(faketds$Name)
 sum(table(faketds$Name) > 3)
 
 ##--Generate time-invariant TD-level variables--
-#party and constiteuency
+#party and constituency
 
 #Define parties - exclude PD since we never had any PD interviews
 partynames <- c("FF", "FG", "Lab", "Gr", "SF", "Left", "Ind")
@@ -87,6 +87,9 @@ names(tdsurvey)[4] <- "Wave"
 varnames.abcd <- as.vector(sapply(c("A", "B", "C", "D"), function(x) paste0("Q", 21:27, x)))
 nreps <- length(varnames.abcd)
 tdsurvey[varnames.abcd] <- replicate(nreps, floor(runif(313, 0, 11)))
+
+tdsurvey$ipc <- factor(x = sample(c("yes", "no"), size = 313, replace = TRUE),
+                       levels = c("yes", "no"))
 
 #Set fpc manually
 tdsurvey$fpc[tdsurvey$Wave == "2007"] <- 102/166
